@@ -1,18 +1,22 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        if (!sc.hasNextInt()) return;
-        int n = sc.nextInt();
-        long t = sc.nextLong();
+        int n = Integer.parseInt(st.nextToken());
+        long t = Long.parseLong(st.nextToken());
 
+        // 각 사람의 T분 후 최종 위치를 저장하는 1차원 배열
         long[] finalPos = new long[n];
         for (int i = 0; i < n; i++) {
-            long x = sc.nextLong();
-            long v = sc.nextLong();
-            // T분 후 방해 없이 달렸을 때의 최종 위치
+            st = new StringTokenizer(br.readLine());
+            long x = Long.parseLong(st.nextToken());
+            long v = Long.parseLong(st.nextToken());
             finalPos[i] = x + v * t;
         }
 
@@ -30,6 +34,5 @@ public class Main {
         }
 
         System.out.println(groupCount);
-        sc.close();
     }
 }
